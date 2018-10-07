@@ -2,8 +2,10 @@ package com.example.kinglu.activitytest;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,13 +22,16 @@ public class FirstActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FirstActivity.this, "hello", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+              //  Toast.makeText(FirstActivity.this, "hello", Toast.LENGTH_SHORT).show();
+                String data = "Hello Secondary";
+                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                startActivityForResult(intent, 1);
+             //   intent.putExtra("extra_data", data);
 //                Intent intent = new Intent("com.example.kinglu.activitytest.ACTION_START");
 //                intent.addCategory("com.example.kinglu.activitytest.MY_CATEGORY");
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://www.baidu.com"));
-                startActivity(intent);
+//                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                intent.setData(Uri.parse("https://www.baidu.com"));
+               // startActivity(intent);
             }
         });
 
@@ -53,4 +58,21 @@ public class FirstActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK){
+                    String returnData = data.getStringExtra("data_return");
+                    Log.d("FirstActivity",returnData);
+
+                }else {
+                   Toast.makeText(FirstActivity.this,"数据返回失败",Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
+

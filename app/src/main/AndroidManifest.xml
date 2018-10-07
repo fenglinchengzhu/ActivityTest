@@ -15,14 +15,12 @@
             android:label="This is first activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity">
             <intent-filter>
                 <action android:name="com.example.kinglu.activitytest.ACTION_START" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="com.example.kinglu.activitytest.MY_CATEGORY" />
             </intent-filter>
