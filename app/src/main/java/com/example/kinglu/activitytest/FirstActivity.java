@@ -1,6 +1,7 @@
 package com.example.kinglu.activitytest;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,7 +21,11 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(FirstActivity.this, "hello", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+//                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+//                Intent intent = new Intent("com.example.kinglu.activitytest.ACTION_START");
+//                intent.addCategory("com.example.kinglu.activitytest.MY_CATEGORY");
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.baidu.com"));
                 startActivity(intent);
             }
         });
